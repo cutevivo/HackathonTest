@@ -98,7 +98,7 @@ public class Account {
             sb.append(each);
             sb.append("\n");
         }
-        sb.append(String.format("Total $%.2f\n", sumTransactions()));
+        sb.append(String.format("Total $%s\n", Transaction.df.format(sumTransactions())));
         return sb.toString();
     }
 }

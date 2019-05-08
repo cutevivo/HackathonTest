@@ -1,9 +1,10 @@
+import java.text.DecimalFormat;
 import java.util.Calendar;
 import java.util.Date;
 
 public class Transaction {
     public final double amount;
-
+    public static DecimalFormat df = new DecimalFormat("#,###.00");
     private enum Type {
         DEPOSIT, WITHDRAWAL;
 
@@ -39,7 +40,7 @@ public class Transaction {
         StringBuilder sb = new StringBuilder();
         sb.append(type);
         sb.append(" $");
-        sb.append(String.format("%.2f", amount));
+        sb.append(df.format(amount));
         return sb.toString();
     }
 }
