@@ -70,7 +70,7 @@ public class Account {
     public double sumTransactions() {
         double amount = 0.0;
         for(Transaction each : this.transactions) {
-            amount += each.amount;
+            amount += each.getAmount();
         }
         return amount;
     }
