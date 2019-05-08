@@ -20,16 +20,19 @@ public class Bank {
         int NumOfCustomers = this.customers.size();
         if(NumOfCustomers == 1){
             Customer temp = customers.get(0);
-            summary = summary + " - " + temp.getName() + " " + "(" + temp.getNumberOfAccounts() + " accounts)";
+            int NumberOfAccounts = temp.getNumberOfAccounts();
+            summary = summary + " - " + temp.getName() + " " + "(" + NumberOfAccounts + ((NumberOfAccounts > 1) ? " accounts)" : " account)");
         }
         if(NumOfCustomers >= 2) {
             for (int i = 0; i < NumOfCustomers - 1; i++) {
                 Customer temp = customers.get(i);
-                summary = summary + " - " + temp.getName() + " " + "(" + temp.getNumberOfAccounts() + " accounts)";
+                int NumberOfAccounts = temp.getNumberOfAccounts();
+                summary = summary + " - " + temp.getName() + " " + "(" + NumberOfAccounts + ((NumberOfAccounts > 1) ? " accounts)" : " account)");
                 summary = summary + "\n";
             }
             Customer FinalCustomer = customers.get(customers.size() - 1);
-            summary = summary + " - " + FinalCustomer.getName() + " " + "(" + FinalCustomer.getNumberOfAccounts() + " accounts)";
+            int NumberOfAccounts = FinalCustomer.getNumberOfAccounts();
+            summary = summary + " - " + FinalCustomer.getName() + " " + "(" + NumberOfAccounts + ((NumberOfAccounts > 1) ? " accounts)" : " account)");
         }
         return summary;
     }
