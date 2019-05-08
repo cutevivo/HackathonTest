@@ -70,7 +70,7 @@ public class Account {
     public double sumTransactions() {
         double amount = 0.0;
         for(Transaction each : this.transactions) {
-            amount += each.amount;
+            amount += each.getAmount();
         }
         return amount;
     }
@@ -98,9 +98,7 @@ public class Account {
             sb.append(each);
             sb.append("\n");
         }
-        sb.append("Total $");
-        sb.append(sumTransactions());
-        sb.append("\n");
+        sb.append(String.format("Total $%s\n", Transaction.df.format(sumTransactions())));
         return sb.toString();
     }
 }
