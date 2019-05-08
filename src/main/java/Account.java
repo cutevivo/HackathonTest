@@ -98,9 +98,7 @@ public class Account {
             sb.append(each);
             sb.append("\n");
         }
-        sb.append("Total $");
-        sb.append(sumTransactions());
-        sb.append("\n");
+        sb.append(String.format("Total $%.2f\n", sumTransactions()));
         return sb.toString();
     }
 }
