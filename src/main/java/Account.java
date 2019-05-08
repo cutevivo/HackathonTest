@@ -41,29 +41,29 @@ public class Account {
     //根据不同的账号类型，确定不同利率进行利息计算
     public double interestEarned() {
         double amount = sumTransactions();
+        double earned = 0.0;
         switch (accountType) {
             case CHECKING:
-                amount *= (1 + 0.001);
+                earned = amount * 0.001;
                 break;
             case SAVINGS:
-                double tmp = (amount % 1001) * 0.001;
                 if(amount > 1000) {
-                    tmp += (amount - 1000) * 0.002;
+                    earned = (amount - 1000) * 0.002 + 1;
+                } else {
+                    earned = amount * 0.001;
                 }
-                amount += tmp;
                 break;
             case MAXI_SAVINGS:
-                double tmpMax = (amount % 1001) * 0.02;
-                if(amount > 1000) {
-                    tmpMax += ((amount - 1000) % 1001) * 0.05;
-                }
                 if(amount > 2000) {
-                    tmpMax += (amount - 2000) * 0.1;
+                    earned = (amount - 2000) * 0.1 + 70;
+                } else if(amount > 1000) {
+                    earned = (amount - 1000) * 0.05 + 20;
+                } else {
+                    earned = amount * 0.02;
                 }
-                amount += tmpMax;
                 break;
         }
-        return amount;
+        return earned;
     }
 
     //返回账号余额
